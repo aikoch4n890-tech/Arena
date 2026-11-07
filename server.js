@@ -6,7 +6,7 @@ const { WebSocketServer } = require("ws");
 const { connectLink } = require("./chat");
 
 const PORT = process.env.PORT || 3000;
-const PUB = path.join(__dirname, "public");
+const PUB = fs.existsSync(path.join(__dirname, "public")) ? path.join(__dirname, "public") : __dirname;
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".png": "image/png", ".json": "application/json" };
 
 const server = http.createServer((req, res) => {
